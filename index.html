@@ -243,9 +243,66 @@
     font-size:.9rem;
   }
   .btn-link:hover{background:var(--gold-deep); color:#fff;}
+
+  .music-player{
+    position:fixed;
+    right:1.2rem;
+    bottom:1.2rem;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    gap:.7rem;
+    background:var(--wine-deep);
+    color:#f5efe0;
+    padding:.6rem 1rem .6rem .6rem;
+    border-radius:999px;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);
+    max-width:min(78vw, 300px);
+  }
+  .music-player .toggle{
+    flex:0 0 auto;
+    width:2.5rem;
+    height:2.5rem;
+    border-radius:50%;
+    border:none;
+    background:var(--gold);
+    color:#241d0d;
+    font-size:1.05rem;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .music-player .toggle:hover{background:var(--gold-deep); color:#fff;}
+  .music-player .info{
+    min-width:0;
+    line-height:1.35;
+  }
+  .music-player .info .label{
+    font-size:.68rem;
+    letter-spacing:.12em;
+    color:#d8c78f;
+    display:block;
+  }
+  .music-player .info .track{
+    font-size:.85rem;
+    font-weight:600;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
 </style>
 </head>
 <body>
+
+<div class="music-player">
+  <button class="toggle" id="musicToggle" aria-label="播放背景音樂" type="button">&#9658;</button>
+  <div class="info">
+    <span class="label">背景音樂 · 自動輪播</span>
+    <span class="track" id="musicTrack">Eventyrdrengen</span>
+  </div>
+  <audio id="bgAudio" preload="none"></audio>
+</div>
 
 <div class="hero">
   <div class="eyebrow">HANS CHRISTIAN ANDERSEN · 1805–1875 · ODENSE, DENMARK</div>
@@ -448,9 +505,54 @@
 <footer>
   <div class="wrap">
     安徒生生平與作品整理筆記 · 文字整理自公開生平與文學史資料 · 插圖為 AI 生成童話情境示意圖，僅供閱讀輔助參考<br>
-    行程對應：北歐四國 15 日行程 Day 12 歐登西 · <a href="https://maskywg.github.io/northeurope/北歐四國" target="_blank" rel="noopener">回到北歐四國主行程網頁 ↗</a>
+    行程對應：北歐四國 15 日行程 Day 12 歐登西 · <a href="https://maskywg.github.io/northeurope/北歐四國" target="_blank" rel="noopener">回到北歐四國主行程網頁 ↗</a><br>
+    背景音樂：《Eventyrdrengen》兩個版本自動輪播播放
   </div>
 </footer>
+
+<script>
+(function(){
+  var playlist = [
+    { src: "audio/eventyrdrengen-1.mp3", label: "Eventyrdrengen · Take 1" },
+    { src: "audio/eventyrdrengen-2.mp3", label: "Eventyrdrengen · Take 2" }
+  ];
+  var idx = 0;
+  var audio = document.getElementById("bgAudio");
+  var toggleBtn = document.getElementById("musicToggle");
+  var trackLabel = document.getElementById("musicTrack");
+  var playing = false;
+
+  function loadTrack(i){
+    audio.src = playlist[i].src;
+    trackLabel.textContent = playlist[i].label;
+  }
+  function playCurrent(){
+    loadTrack(idx);
+    audio.play().catch(function(){});
+  }
+  loadTrack(idx);
+
+  audio.addEventListener("ended", function(){
+    idx = (idx + 1) % playlist.length;
+    playCurrent();
+  });
+
+  toggleBtn.addEventListener("click", function(){
+    if(playing){
+      audio.pause();
+      toggleBtn.innerHTML = "&#9658;";
+      toggleBtn.setAttribute("aria-label","播放背景音樂");
+      playing = false;
+    } else {
+      if(!audio.src || audio.src === ""){ loadTrack(idx); }
+      audio.play().catch(function(){});
+      toggleBtn.innerHTML = "&#10073;&#10073;";
+      toggleBtn.setAttribute("aria-label","暫停背景音樂");
+      playing = true;
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
