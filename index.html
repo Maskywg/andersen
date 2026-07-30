@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安徒生：歐登西的說故事人與他的童話王國</title>
+<style>
+  :root{
+    --wine:#5c1a24;
+    --wine-deep:#3a0f16;
+    --gold:#c9982f;
+    --gold-deep:#a67a1e;
+    --cream:#f5efe0;
+    --paper:#faf6ec;
+    --ink:#2a201c;
+    --ink-soft:#5a4d42;
+    --line:#e0d3b8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Noto Serif TC","PMingLiU","Songti TC",serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.9;
+  }
+  .hero{
+    position:relative;
+    padding:7rem 1.5rem 5rem;
+    text-align:center;
+    background:
+      linear-gradient(180deg, rgba(58,15,22,.55), rgba(58,15,22,.85)),
+      url('images/hero-odense_20260730_090841.png') center/cover no-repeat;
+    color:#f9efd9;
+  }
+  .hero .eyebrow{
+    letter-spacing:.35em;
+    font-size:.8rem;
+    text-transform:uppercase;
+    color:#e7cd8f;
+    margin-bottom:1.2rem;
+  }
+  .hero h1{
+    font-size:clamp(1.9rem, 4.5vw, 3.1rem);
+    margin:0 0 1rem;
+    font-weight:700;
+    text-shadow:0 2px 12px rgba(0,0,0,.4);
+  }
+  .hero p{
+    max-width:660px;
+    margin:0 auto;
+    font-size:1.05rem;
+    color:#efe2c2;
+  }
+  .hero .dates{
+    margin-top:1.6rem;
+    font-size:.95rem;
+    letter-spacing:.08em;
+    color:#d8c78f;
+  }
+
+  .wrap{max-width:880px;margin:0 auto;padding:0 1.5rem;}
+
+  nav.toc{
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    padding:1rem 0;
+    position:sticky; top:0; z-index:10;
+    overflow-x:auto;
+  }
+  nav.toc ul{
+    display:flex;
+    gap:1.6rem;
+    list-style:none;
+    margin:0; padding:0 1.5rem;
+    max-width:880px;
+    margin:0 auto;
+    white-space:nowrap;
+  }
+  nav.toc a{
+    color:var(--wine-deep);
+    text-decoration:none;
+    font-size:.9rem;
+    font-weight:600;
+    border-bottom:2px solid transparent;
+    padding-bottom:.3rem;
+  }
+  nav.toc a:hover{border-bottom-color:var(--gold);}
+
+  section{padding:4.5rem 0;}
+  section.alt{background:var(--cream);}
+  section .wrap > .tag{
+    display:inline-block;
+    font-size:.78rem;
+    letter-spacing:.2em;
+    color:var(--gold-deep);
+    font-weight:700;
+    margin-bottom:.8rem;
+  }
+  h2{
+    font-size:clamp(1.4rem,3vw,1.9rem);
+    color:var(--wine-deep);
+    margin:0 0 1.4rem;
+    border-left:6px solid var(--wine);
+    padding-left:.7rem;
+  }
+  h3{
+    color:var(--gold-deep);
+    font-size:1.15rem;
+    margin:2rem 0 .8rem;
+  }
+  p{margin:0 0 1.1rem; color:var(--ink-soft);}
+  strong{color:var(--ink);}
+  a{color:var(--wine-deep);}
+
+  figure{margin:2rem 0;}
+  figure img{
+    width:100%;
+    border-radius:10px;
+    display:block;
+    box-shadow:0 10px 30px rgba(58,15,22,.2);
+  }
+  figcaption{
+    font-size:.85rem;
+    color:#8a7256;
+    text-align:center;
+    margin-top:.6rem;
+    font-style:italic;
+  }
+
+  .callout{
+    background:linear-gradient(135deg, #fff, var(--cream));
+    border:1px solid var(--line);
+    border-left:5px solid var(--gold);
+    border-radius:8px;
+    padding:1.3rem 1.5rem;
+    margin:1.8rem 0;
+  }
+  .callout p{margin:0; color:var(--ink);}
+  .callout .label{
+    font-weight:700;
+    color:var(--gold-deep);
+    font-size:.85rem;
+    letter-spacing:.1em;
+    margin-bottom:.4rem;
+    display:block;
+  }
+
+  .timeline{
+    margin:2rem 0;
+    border-left:2px solid var(--line);
+    padding-left:1.4rem;
+  }
+  .timeline .item{margin-bottom:1.4rem;}
+  .timeline .year{
+    font-weight:700;
+    color:var(--wine-deep);
+    display:block;
+    margin-bottom:.2rem;
+  }
+
+  .tale-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.6rem;
+    margin:2rem 0;
+  }
+  @media (max-width:640px){
+    .tale-grid{grid-template-columns:1fr;}
+  }
+  .tale-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 6px 18px rgba(58,15,22,.08);
+  }
+  .tale-card img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+  }
+  .tale-card .body{padding:1.1rem 1.3rem 1.3rem;}
+  .tale-card h4{
+    margin:0 0 .3rem;
+    color:var(--wine-deep);
+    font-size:1.05rem;
+  }
+  .tale-card .year{
+    font-size:.78rem;
+    color:var(--gold-deep);
+    letter-spacing:.05em;
+    margin-bottom:.6rem;
+    display:block;
+  }
+  .tale-card p{margin:0; font-size:.92rem;}
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:1.8rem 0;
+    font-size:.95rem;
+  }
+  th,td{
+    padding:.8rem 1rem;
+    text-align:left;
+    border-bottom:1px solid var(--line);
+  }
+  th{
+    background:var(--wine);
+    color:#f5efe0;
+    font-weight:600;
+  }
+  tr:nth-child(even){background:#00000005;}
+
+  footer{
+    padding:3rem 1.5rem 4rem;
+    text-align:center;
+    background:var(--ink);
+    color:#cbb99c;
+    font-size:.85rem;
+  }
+  footer a{color:#e7cd8f;}
+  .disclaimer{
+    max-width:880px;margin:0 auto 2rem;
+    font-size:.78rem;
+    color:#8a7256;
+    background:var(--cream);
+    border:1px dashed var(--line);
+    border-radius:8px;
+    padding:1rem 1.3rem;
+  }
+  .btn-link{
+    display:inline-block;
+    margin-top:.3rem;
+    padding:.6rem 1.1rem;
+    background:var(--gold);
+    color:#241d0d;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:700;
+    font-size:.9rem;
+  }
+  .btn-link:hover{background:var(--gold-deep); color:#fff;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">HANS CHRISTIAN ANDERSEN · 1805–1875 · ODENSE, DENMARK</div>
+  <h1>歐登西的說故事人<br>安徒生與他的童話王國</h1>
+  <p>一個鞋匠之子，從丹麥小鎮歐登西的貧窮巷弄出發，最後成為全世界孩子共同的說故事人。這是關於安徒生的生平、他筆下最著名的童話與小說，以及他故鄉那座童話博物館的故事。</p>
+  <div class="dates">Hans Christian Andersen · 1805 年 4 月 2 日－1875 年 8 月 4 日</div>
+</div>
+
+<nav class="toc">
+  <ul>
+    <li><a href="#intro">歐登西之子</a></li>
+    <li><a href="#life">生平與轉折</a></li>
+    <li><a href="#tales">經典童話</a></li>
+    <li><a href="#novels">安徒生的小說</a></li>
+    <li><a href="#museum">安徒生博物館</a></li>
+    <li><a href="#legacy">遺產</a></li>
+  </ul>
+</nav>
+
+<div class="wrap disclaimer" style="margin-top:2rem;">
+  說明：本頁文字整理自公開的生平與文學史資料；文中插圖為 AI 生成之童話情境示意圖，並非特定歷史場景的實際照片，僅供閱讀輔助參考。
+</div>
+
+<section id="intro">
+  <div class="wrap">
+    <span class="tag">01 · 為什麼是歐登西</span>
+    <h2>從鞋匠之子到全世界的童話爺爺</h2>
+    <p><strong>漢斯・克里斯汀・安徒生（Hans Christian Andersen）</strong>1805 年出生於丹麥菲因島（Funen）上的城鎮<strong>歐登西（Odense）</strong>，父親是一名貧窮的鞋匠，母親是洗衣婦，一家人擠在狹小的單間屋子裡生活。安徒生從小體型瘦高、相貌特殊，個性敏感又充滿幻想，常被同齡孩子嘲笑，卻也在父親講述的《一千零一夜》故事與偶戲表演中，早早埋下了說故事的種子。</p>
+    <p>14 歲那年，安徒生幾乎是隻身離開歐登西前往哥本哈根，懷抱著成為演員或歌手的夢想。這趟看似莽撞的出走，最終意外開啟了他成為丹麥史上最重要作家的一生——他一生寫下超過 150 篇童話、6 部長篇小說、多部劇本與遊記，其中《醜小鴨》《人魚公主》《國王的新衣》《賣火柴的小女孩》等作品，至今仍是全世界孩子共同的童年記憶。</p>
+    <figure>
+      <img src="images/hero-odense_20260730_090841.png" alt="歐登西老城區彩色木屋與運河示意圖">
+      <figcaption>歐登西：安徒生出生成長的丹麥小鎮，至今仍保留大量童話色彩的老城街景（AI 示意圖）</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="life" class="alt">
+  <div class="wrap">
+    <span class="tag">02 · 生平</span>
+    <h2>從貧民窟到皇室座上賓的一生</h2>
+    <div class="timeline">
+      <div class="item">
+        <span class="year">1805 年</span>
+        4 月 2 日出生於歐登西的貧民區，父親漢斯（鞋匠）、母親安・瑪莉（洗衣婦），全家住在一間僅十餘坪的租屋內。
+      </div>
+      <div class="item">
+        <span class="year">1816 年</span>
+        父親過世，11 歲的安徒生輟學，做過紡織廠與菸廠學徒，但始終熱衷於戲劇與演出，經常自編自演木偶戲。
+      </div>
+      <div class="item">
+        <span class="year">1819 年</span>
+        14 歲，帶著母親給的少許積蓄獨自前往哥本哈根，投考皇家劇院，希望成為演員或歌手，卻屢屢碰壁、生活困頓。
+      </div>
+      <div class="item">
+        <span class="year">1822 年</span>
+        皇家劇院董事<strong>約拿斯・柯林（Jonas Collin）</strong>發現他的文字天分，說服丹麥國王腓特烈六世出資，將他送往斯萊格爾瑟（Slagelse）與赫爾辛格（Helsingør）的文法學校就讀。這段求學歲月因校長邁斯林（Simon Meisling）的嚴厲對待而相當痛苦，安徒生後來形容那是他一生中最黑暗的時期之一。
+      </div>
+      <div class="item">
+        <span class="year">1828 年</span>
+        進入哥本哈根大學就讀，隔年以遊記體小品《從霍爾門運河徒步到阿邁厄島東岬的旅程》初試啼聲，獲得矚目。
+      </div>
+      <div class="item">
+        <span class="year">1833–1834 年</span>
+        獲得丹麥王室旅行獎助金，展開橫跨德國、法國、瑞士、義大利的長途旅行，眼界大開，也結識了雨果、海涅等歐洲文壇人物。
+      </div>
+      <div class="item">
+        <span class="year">1835 年</span>
+        出版長篇小說《即興詩人》（The Improvisatore），一舉成名，成為他生前在歐洲最暢銷的作品；同年也出版第一本童話集《講給孩子們聽的故事》，收錄〈打火匣〉〈小克勞斯與大克勞斯〉〈豌豆公主〉等篇。
+      </div>
+      <div class="item">
+        <span class="year">1837 年</span>
+        發表〈人魚公主〉與〈國王的新衣〉，童話創作進入成熟期。
+      </div>
+      <div class="item">
+        <span class="year">1843–1845 年</span>
+        陸續發表〈醜小鴨〉〈夜鶯〉〈白雪皇后〉；1845 年德文版童話集在德國造成轟動，安徒生自此聲名遠播全歐洲。
+      </div>
+      <div class="item">
+        <span class="year">1847 年、1857 年</span>
+        兩度造訪英國，並與小說家<strong>查爾斯・狄更斯</strong>結為好友——1857 年他甚至在狄更斯家中作客長達五週之久，據說讓狄更斯一家不堪其擾。
+      </div>
+      <div class="item">
+        <span class="year">終身未婚</span>
+        安徒生一生未婚，曾對多位對象懷抱無疾而終的愛慕之情，其中最著名的是被譽為「瑞典夜鶯」的歌劇女伶<strong>珍妮・林德（Jenny Lind）</strong>，兩人始終維持柏拉圖式的深厚友誼。
+      </div>
+      <div class="item">
+        <span class="year">1875 年 8 月 4 日</span>
+        安徒生於哥本哈根友人的宅邸「Rolighed」病逝，享壽 70 歲。丹麥為他舉行國葬規格的告別式，國王與王室成員均出席致意。
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tales">
+  <div class="wrap">
+    <span class="tag">03 · 代表作 I</span>
+    <h2>經典童話：寫給孩子，也寫給大人的寓言</h2>
+    <p>安徒生的童話與格林兄弟蒐集整理的民間傳說不同——絕大多數是他<strong>原創的文學作品</strong>，融合了他自己坎坷的出身、對社會階級的觀察，以及對人性溫柔而銳利的洞察，因此常帶有淡淡的哀傷與深刻的寓意，而不只是「從此過著幸福快樂的日子」。</p>
+    <div class="tale-grid">
+      <div class="tale-card">
+        <img src="images/ugly-duckling_20260730_090937.png" alt="醜小鴨插圖，灰色雛鳥站在天鵝群中">
+        <div class="body">
+          <span class="year">1843 年</span>
+          <h4>醜小鴨</h4>
+          <p>被兄弟姊妹嘲笑排擠的灰色雛鳥，歷經寒冬流浪，最終發現自己其實是一隻天鵝。公認是安徒生自身身世最直接的投射。</p>
+        </div>
+      </div>
+      <div class="tale-card">
+        <img src="images/little-match-girl_20260730_091010.png" alt="賣火柴的小女孩插圖，雪夜中點燃火柴的女孩">
+        <div class="body">
+          <span class="year">1845 年</span>
+          <h4>賣火柴的小女孩</h4>
+          <p>除夕夜街頭赤腳賣火柴的貧苦女孩，一根根點燃火柴取暖，在幻影中看見溫暖與親情，是安徒生最著名的悲劇童話之一。</p>
+        </div>
+      </div>
+      <div class="tale-card">
+        <img src="images/little-mermaid_20260730_091247.png" alt="人魚公主插圖，坐在海邊岩石上眺望遠方船隻">
+        <div class="body">
+          <span class="year">1837 年</span>
+          <h4>人魚公主</h4>
+          <p>為了追求人類王子與不朽的靈魂，人魚公主放棄海底一切、忍受化為泡沫的痛苦。原版結局比迪士尼動畫更為淒美深沉。</p>
+        </div>
+      </div>
+      <div class="tale-card">
+        <img src="images/emperors-new-clothes_20260730_091317.png" alt="國王的新衣插圖，國王穿著紅白條紋長內衣遊行，孩童指著他笑">
+        <div class="body">
+          <span class="year">1837 年</span>
+          <h4>國王的新衣</h4>
+          <p>兩個騙子聲稱織出「愚人看不見」的布料，滿朝文武不敢承認自己看不見，最終由一個孩子的童言道破真相，諷刺虛榮與集體盲從。</p>
+        </div>
+      </div>
+      <div class="tale-card">
+        <img src="images/thumbelina_20260730_091359.png" alt="拇指姑娘插圖，坐在花朵中的迷你女孩與燕子">
+        <div class="body">
+          <span class="year">1835 年</span>
+          <h4>拇指姑娘</h4>
+          <p>從花朵中誕生、只有拇指般大小的小女孩，歷經蟾蜍、金龜子、鼴鼠的波折冒險，最終在花精靈的國度找到歸屬。</p>
+        </div>
+      </div>
+      <div class="tale-card">
+        <img src="images/tin-soldier_20260730_091443.png" alt="堅定的錫兵插圖，獨腳錫兵站在紙芭蕾舞者旁">
+        <div class="body">
+          <span class="year">1838 年</span>
+          <h4>堅定的錫兵</h4>
+          <p>因鑄造瑕疵只有一條腿的錫兵，默默愛慕著紙做的芭蕾舞孃，歷經千辛萬苦的漂流冒險，展現安徒生對「殘缺與堅毅」的溫柔詮釋。</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="label">還有更多</span>
+      <p>安徒生的童話產量極為驚人，其他廣為流傳的作品還包括〈白雪皇后〉（啟發了迪士尼動畫《冰雪奇緣》）、〈夜鶯〉、〈打火匣〉、〈豌豆公主〉、〈野天鵝〉與〈冰雪女王〉等，一生共創作超過 150 篇童話與故事。</p>
+    </div>
+  </div>
+</section>
+
+<section id="novels" class="alt">
+  <div class="wrap">
+    <span class="tag">04 · 代表作 II</span>
+    <h2>安徒生的小說：被童話光芒掩蓋的另一面</h2>
+    <p>雖然安徒生如今幾乎只以「童話作家」的形象被記住，但他其實一生筆耕不輟地創作長篇小說、詩集、劇本與遊記，而且在世時，這些小說作品在歐洲文壇的評價與知名度，一度並不亞於他的童話。</p>
+    <table>
+      <tr><th>作品</th><th>年代</th><th>簡介</th></tr>
+      <tr><td><strong>即興詩人</strong>（The Improvisatore）</td><td>1835 年</td><td>安徒生的長篇小說成名作，以他遊歷義大利的見聞為背景，描寫一位天賦異稟的窮困詩人在羅馬的成長故事，帶有濃厚自傳色彩，在德國與英國廣受好評。</td></tr>
+      <tr><td><strong>O.T.</strong></td><td>1836 年</td><td>以丹麥社會為背景的成長小說，描寫一名出身成謎的青年在哥本哈根求學、掙扎於身世秘密與社會階級之間的故事。</td></tr>
+      <tr><td><strong>只是個提琴手</strong>（Only a Fiddler）</td><td>1837 年</td><td>描寫一位懷抱音樂夢想、卻因出身貧寒而始終無法被社會認可的小提琴手，命運坎坷，被視為安徒生對自身奮鬥歷程最沉重的反思之作，也是丹麥哲學家齊克果撰文評論的對象。</td></tr>
+    </table>
+    <p>此外，安徒生也留下大量遊記散文，如記錄他長途旅行見聞的《詩人的市集》《西班牙紀行》等，以及自傳《我的一生的童話》（The Fairy Tale of My Life），是後世研究他生平最重要的第一手資料。</p>
+  </div>
+</section>
+
+<section id="museum">
+  <div class="wrap">
+    <span class="tag">05 · 朝聖地</span>
+    <h2>H.C. Andersens Hus：全世界最大的單一作家博物館</h2>
+    <p>座落於歐登西老城區、安徒生兒時生長街區旁的<strong>安徒生博物館（H.C. Andersens Hus）</strong>，2021 年 6 月由日本建築師<strong>隈研吾（Kengo Kuma）</strong>操刀重新設計啟用，被官方稱為「全世界規模最大的單一作家博物館」。新館刻意將主要展覽空間<strong>下沉至地面以下</strong>，讓覆滿草坡屋頂的圓形庭院與周圍歷史街屋的天際線和諧共存，不搶走老城區原有的童話氛圍。</p>
+    <figure>
+      <img src="images/museum-building_20260730_091507.png" alt="安徒生博物館新館建築示意圖，圓形下沉庭院與草坡屋頂">
+      <figcaption>H.C. Andersens Hus 新館：由隈研吾設計，多個圓形下沉庭院與草坡屋頂融入歐登西老城景觀（AI 示意圖）</figcaption>
+    </figure>
+    <p>館內以沉浸式的多媒體手法，將安徒生的生平與童話世界交織呈現——訪客會穿梭於一系列圓形展廳與地下迴廊之間，搭配光影、聲音與互動裝置，重現〈醜小鴨〉〈人魚公主〉〈國王的新衣〉等經典場景的情境，而非只是靜態的文物陳列。館外的童話花園則種植了大量呼應各篇故事意象的植栽與造景，適合放慢腳步散步。</p>
+    <p>博物館園區內也保留、串連了安徒生真正的<strong>兒時故居（H.C. Andersens Barndomshjem）</strong>——一間位於 Munkemøllestræde 街上、極其樸素的小屋，是安徒生 2 歲到 14 歲離家前往哥本哈根之前實際居住的地方，如今作為新館的延伸展區之一，讓訪客能對照他從貧困出身到享譽世界的巨大反差。</p>
+    <div class="callout">
+      <span class="label">參觀資訊</span>
+      <p>博物館位於歐登西市中心步行可達範圍，地址 Bangs Boder 29, 5000 Odense C。全年開放（部分公眾假期休館），建議預留 2–3 小時參觀新館展區與童話花園。詳細開放時間、票價與最新資訊請以官方網站公告為準：</p>
+      <a class="btn-link" href="https://hcandersenshus.dk/en/" target="_blank" rel="noopener">前往安徒生博物館官方網站 ↗</a>
+      <a class="btn-link" style="margin-left:.6rem;" href="https://www.visitodense.com/en" target="_blank" rel="noopener">Visit Odense 官方旅遊資訊 ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="legacy" class="alt">
+  <div class="wrap">
+    <span class="tag">06 · 遺產</span>
+    <h2>一個窮鞋匠之子，如何成為全世界孩子的說故事人</h2>
+    <p>安徒生的童話至今已被翻譯成超過 150 種語言，是全世界翻譯語言數僅次於聖經的作品之一。他筆下那些「不完美」的主角——被排擠的醜小鴨、只有一條腿的錫兵、赤貧的賣火柴女孩——讓童話不再只是簡單的勸善寓言，而是承載著孤獨、渴望與堅韌的深刻人性描寫，也讓他被視為「現代文學童話」的奠基者。</p>
+    <p>1967 年起，國際兒童讀物聯盟（IBBY）設立「國際安徒生獎」，被譽為兒童文學界的諾貝爾獎，正是以他為名。而在他的故鄉歐登西，每年夏天舉辦的<strong>安徒生藝術節（H.C. Andersen Festivals）</strong>，也持續以街頭劇場、遊行與煙火，向這位一生說故事給全世界聽的歐登西之子致敬。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    安徒生生平與作品整理筆記 · 文字整理自公開生平與文學史資料 · 插圖為 AI 生成童話情境示意圖，僅供閱讀輔助參考<br>
+    行程對應：北歐四國 15 日行程 Day 12 歐登西 · <a href="https://maskywg.github.io/northeurope/北歐四國" target="_blank" rel="noopener">回到北歐四國主行程網頁 ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
