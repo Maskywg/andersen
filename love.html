@@ -353,6 +353,51 @@
   }
   footer a{color:var(--gold-soft);}
 
+  .music-player{
+    position:fixed;
+    right:1.2rem;
+    bottom:1.2rem;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    gap:.7rem;
+    background:var(--rose-deep);
+    color:#f3d9d6;
+    padding:.6rem 1rem .6rem .6rem;
+    border-radius:999px;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);
+    max-width:min(78vw, 300px);
+  }
+  .music-player .toggle{
+    flex:0 0 auto;
+    width:2.5rem;
+    height:2.5rem;
+    border-radius:50%;
+    border:none;
+    background:var(--gold);
+    color:#2c1a1c;
+    font-size:1.05rem;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .music-player .toggle:hover{background:var(--gold-soft); color:#fff;}
+  .music-player .info{min-width:0; line-height:1.35;}
+  .music-player .info .label{
+    font-size:.68rem;
+    letter-spacing:.12em;
+    color:#e3b9be;
+    display:block;
+  }
+  .music-player .info .track{
+    font-size:.85rem;
+    font-weight:600;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
   @media(max-width:600px){
     .hero{padding:5rem 1.2rem 3.5rem;}
     section{padding:3.2rem 0;}
@@ -364,6 +409,15 @@
 <div class="backbar">
   這是《歐登西的說故事人：安徒生與他的童話王國》的延伸專題 ·
   <a href="index.html">← 回到安徒生主頁</a>
+</div>
+
+<div class="music-player">
+  <button class="toggle" id="musicToggle" aria-label="播放配樂" type="button">&#9658;</button>
+  <div class="info">
+    <span class="label">配樂 · 原創創作</span>
+    <span class="track">Et brev, jeg aldrig sendte</span>
+  </div>
+  <audio id="bgAudio" src="audio/et-brev-jeg-aldrig-sendte.mp3" preload="auto" loop></audio>
 </div>
 
 <nav class="toc">
@@ -760,6 +814,49 @@ og døde med et brev, helt tæt på min mund.</div>
     <a href="https://maskywg.github.io/northeurope/北歐四國" target="_blank" rel="noopener">回到北歐四國主行程網頁 ↗</a>
   </div>
 </footer>
+
+<script>
+(function(){
+  var audio = document.getElementById("bgAudio");
+  var toggleBtn = document.getElementById("musicToggle");
+  var playing = false;
+
+  function setPlayingUI(isPlaying){
+    playing = isPlaying;
+    toggleBtn.innerHTML = isPlaying ? "&#10073;&#10073;" : "&#9658;";
+    toggleBtn.setAttribute("aria-label", isPlaying ? "暫停配樂" : "播放配樂");
+  }
+
+  function tryAutoplay(){
+    var p = audio.play();
+    if(p && typeof p.then === "function"){
+      p.then(function(){ setPlayingUI(true); })
+       .catch(function(){
+          // 瀏覽器阻擋了自動播放，改為監聽使用者第一次互動後立刻播放
+          var start = function(){
+            audio.play().then(function(){ setPlayingUI(true); }).catch(function(){});
+            document.removeEventListener("click", start);
+            document.removeEventListener("touchstart", start);
+            document.removeEventListener("keydown", start);
+          };
+          document.addEventListener("click", start, { once:true });
+          document.addEventListener("touchstart", start, { once:true });
+          document.addEventListener("keydown", start, { once:true });
+       });
+    }
+  }
+  tryAutoplay();
+
+  toggleBtn.addEventListener("click", function(){
+    if(playing){
+      audio.pause();
+      setPlayingUI(false);
+    } else {
+      audio.play().then(function(){ setPlayingUI(true); }).catch(function(){});
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
