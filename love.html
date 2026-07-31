@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安徒生的心之地圖：那些他愛慕過的人</title>
+<meta name="description" content="安徒生的感情世界深度專題：他一生愛慕過的男男女女，書信裡的告白，以及那些藏在童話裡的心事。">
+<style>
+  :root{
+    --rose-deep:#5c0f28;
+    --rose:#7d1c3c;
+    --rose-soft:#a94a63;
+    --blush:#f3d9d6;
+    --gold:#c9982f;
+    --gold-soft:#e0bb72;
+    --paper:#fdf5f0;
+    --cream:#f7e9e2;
+    --ink:#2c1a1c;
+    --ink-soft:#5f4548;
+    --line:#e8cfc6;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:"Noto Serif TC","PMingLiU","Songti TC",serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.9;
+  }
+  a{color:var(--rose-deep);}
+
+  /* ---------- top nav ---------- */
+  .backbar{
+    background:var(--rose-deep);
+    color:#f3d9d6;
+    font-size:.85rem;
+    text-align:center;
+    padding:.55rem 1rem;
+  }
+  .backbar a{color:#f3d9d6cc;text-decoration:none;border-bottom:1px dotted #f3d9d688;}
+  .backbar a:hover{color:#fff;}
+
+  nav.toc{
+    background:var(--cream);
+    border-bottom:1px solid var(--line);
+    padding:.9rem 0;
+    position:sticky; top:0; z-index:10;
+    overflow-x:auto;
+  }
+  nav.toc ul{
+    display:flex;
+    gap:1.5rem;
+    list-style:none;
+    margin:0; padding:0 1.5rem;
+    max-width:920px;
+    margin:0 auto;
+    white-space:nowrap;
+  }
+  nav.toc a{
+    color:var(--rose-deep);
+    text-decoration:none;
+    font-size:.85rem;
+    font-weight:600;
+    border-bottom:2px solid transparent;
+    padding-bottom:.25rem;
+  }
+  nav.toc a:hover{border-bottom-color:var(--gold);}
+
+  .wrap{max-width:920px;margin:0 auto;padding:0 1.5rem;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:6.5rem 1.5rem 5rem;
+    text-align:center;
+    background:
+      linear-gradient(180deg, rgba(92,15,40,.72), rgba(44,10,23,.9)),
+      url('images/love/andersen-old-1869.jpg') center 20%/cover no-repeat;
+    color:#fbe9e6;
+    overflow:hidden;
+  }
+  .hero .heart{
+    position:absolute;
+    bottom:-2rem;
+    font-size:1.2rem;
+    color:#f3d9d655;
+    animation:floatUp linear infinite;
+    pointer-events:none;
+  }
+  @keyframes floatUp{
+    0%{transform:translateY(0) rotate(0deg); opacity:0;}
+    10%{opacity:.8;}
+    90%{opacity:.4;}
+    100%{transform:translateY(-70vh) rotate(25deg); opacity:0;}
+  }
+  .hero .eyebrow{
+    letter-spacing:.35em;
+    font-size:.78rem;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    margin-bottom:1.2rem;
+    position:relative;
+  }
+  .hero h1{
+    font-size:clamp(1.9rem, 4.5vw, 3rem);
+    margin:0 0 1.1rem;
+    font-weight:700;
+    text-shadow:0 2px 14px rgba(0,0,0,.45);
+    position:relative;
+  }
+  .hero p{
+    max-width:640px;
+    margin:0 auto;
+    font-size:1.03rem;
+    color:#f0dcd8;
+    position:relative;
+  }
+  .hero .note{
+    margin-top:1.8rem;
+    font-size:.85rem;
+    letter-spacing:.05em;
+    color:#e3b9be;
+    position:relative;
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:4.5rem 0;}
+  section.alt{background:var(--cream);}
+  .tag{
+    display:inline-block;
+    font-size:.76rem;
+    letter-spacing:.2em;
+    color:var(--gold);
+    font-weight:700;
+    margin-bottom:.8rem;
+  }
+  h2{
+    font-size:clamp(1.35rem,3vw,1.8rem);
+    color:var(--rose-deep);
+    margin:0 0 1.2rem;
+    border-left:6px solid var(--rose);
+    padding-left:.7rem;
+  }
+  h3{color:var(--gold);font-size:1.05rem;letter-spacing:.05em;margin:0 0 .4rem;}
+  p{margin:0 0 1.1rem; color:var(--ink-soft);}
+  strong{color:var(--ink);}
+
+  .lede{font-size:1.05rem;}
+
+  .divider{
+    display:flex; align-items:center; justify-content:center;
+    gap:.8rem; margin:2.4rem 0; color:var(--gold);
+  }
+  .divider::before, .divider::after{
+    content:""; flex:1; max-width:140px; height:1px;
+    background:linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+  }
+
+  /* ---------- people grid ---------- */
+  .people{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(270px, 1fr));
+    gap:1.8rem;
+    margin-top:2rem;
+  }
+  .pcard{
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 12px 30px rgba(92,15,40,.13);
+    border:1px solid var(--line);
+    display:flex; flex-direction:column;
+    position:relative;
+  }
+  .pcard .photo{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+  }
+  .pcard .photo img{
+    width:100%; height:100%; object-fit:cover;
+    filter:sepia(.18) contrast(1.04) saturate(1.05);
+    display:block;
+  }
+  .pcard .ribbon{
+    position:absolute; top:.9rem; left:0;
+    background:var(--rose-deep);
+    color:#fbe9e6;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    padding:.3rem .8rem .3rem .6rem;
+    border-radius:0 4px 4px 0;
+    box-shadow:0 3px 8px rgba(0,0,0,.25);
+  }
+  .pcard .imgcredit{
+    position:absolute; bottom:0; right:0;
+    background:rgba(44,10,23,.55);
+    color:#f3d9d6;
+    font-size:.62rem;
+    padding:.2rem .5rem;
+    border-radius:6px 0 0 0;
+  }
+  .pcard .body{padding:1.3rem 1.4rem 1.5rem;flex:1;display:flex;flex-direction:column;}
+  .pcard .name{font-size:1.1rem;font-weight:700;color:var(--rose-deep);margin-bottom:.1rem;}
+  .pcard .dates{font-size:.8rem;color:var(--gold);letter-spacing:.05em;margin-bottom:.9rem;}
+  .pcard p{font-size:.92rem;margin-bottom:.9rem;}
+  .pcard blockquote{
+    margin:.6rem 0 0;
+    padding:.7rem .9rem;
+    background:var(--cream);
+    border-left:3px solid var(--gold);
+    border-radius:4px;
+    font-size:.85rem;
+    color:var(--ink);
+    font-style:italic;
+  }
+  .pcard blockquote cite{
+    display:block;
+    margin-top:.4rem;
+    font-size:.72rem;
+    font-style:normal;
+    color:var(--ink-soft);
+  }
+  .pcard .echo{
+    margin-top:auto;
+    padding-top:.9rem;
+    font-size:.8rem;
+    color:var(--rose-soft);
+    border-top:1px dashed var(--line);
+  }
+
+  /* ---------- letters section ---------- */
+  .letters{display:grid; gap:1.8rem; margin-top:2rem;}
+  .letter-card{
+    background:linear-gradient(135deg,#fffaf5,var(--paper));
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:1.8rem 2rem;
+    position:relative;
+    box-shadow:0 8px 22px rgba(92,15,40,.09);
+  }
+  .letter-card::before{
+    content:"❧";
+    position:absolute; top:-.8rem; left:1.6rem;
+    background:var(--gold);
+    color:#fff;
+    width:2rem; height:2rem;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1rem;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+  }
+  .letter-card .who{
+    font-size:.82rem; letter-spacing:.08em; color:var(--gold);
+    font-weight:700; margin-bottom:.6rem;
+  }
+  .letter-card .quote-orig{
+    font-family:Georgia,"Times New Roman",serif;
+    font-style:italic;
+    font-size:1.02rem;
+    color:var(--rose-deep);
+    margin-bottom:.6rem;
+  }
+  .letter-card .quote-zh{
+    font-size:1.02rem;
+    color:var(--ink);
+  }
+  .letter-card .src{font-size:.78rem;color:var(--ink-soft);margin-top:.7rem;}
+
+  /* ---------- echoes ---------- */
+  .echoes{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.3rem; margin-top:2rem;}
+  .echo-card{
+    background:#fff; border:1px solid var(--line); border-radius:10px;
+    padding:1.3rem 1.4rem;
+  }
+  .echo-card .title{font-weight:700; color:var(--rose-deep); margin-bottom:.4rem;}
+  .echo-card p{font-size:.88rem; margin:0;}
+
+  .callout{
+    background:linear-gradient(135deg, #fff, var(--cream));
+    border:1px solid var(--line);
+    border-left:5px solid var(--gold);
+    border-radius:8px;
+    padding:1.3rem 1.5rem;
+    margin:1.8rem 0;
+  }
+  .callout p{margin:0; color:var(--ink);}
+  .callout .label{font-weight:700; color:var(--gold); font-size:.82rem; letter-spacing:.1em; margin-bottom:.4rem; display:block;}
+
+  .sources{font-size:.82rem; color:var(--ink-soft);}
+  .sources ol{padding-left:1.3rem;}
+  .sources li{margin-bottom:.5rem;}
+  .sources a{word-break:break-all;}
+
+  footer{
+    background:var(--rose-deep);
+    color:#e9c9ce;
+    padding:2.2rem 0;
+    font-size:.85rem;
+    text-align:center;
+  }
+  footer a{color:var(--gold-soft);}
+
+  @media(max-width:600px){
+    .hero{padding:5rem 1.2rem 3.5rem;}
+    section{padding:3.2rem 0;}
+  }
+</style>
+</head>
+<body>
+
+<div class="backbar">
+  這是《歐登西的說故事人：安徒生與他的童話王國》的延伸專題 ·
+  <a href="index.html">← 回到安徒生主頁</a>
+</div>
+
+<nav class="toc">
+  <ul>
+    <li><a href="#prelude">序</a></li>
+    <li><a href="#people">他愛慕過的人</a></li>
+    <li><a href="#letters">書信裡的告白</a></li>
+    <li><a href="#echoes">童話裡的回聲</a></li>
+    <li><a href="#debate">未有定論的心事</a></li>
+    <li><a href="#sources">資料來源</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <span class="heart" style="left:8%; animation-duration:11s; animation-delay:0s;">♥</span>
+  <span class="heart" style="left:22%; animation-duration:14s; animation-delay:2s; font-size:.8rem;">♥</span>
+  <span class="heart" style="left:38%; animation-duration:9s; animation-delay:4s;">♥</span>
+  <span class="heart" style="left:55%; animation-duration:16s; animation-delay:1s; font-size:.9rem;">♥</span>
+  <span class="heart" style="left:70%; animation-duration:12s; animation-delay:5s;">♥</span>
+  <span class="heart" style="left:85%; animation-duration:10s; animation-delay:3s; font-size:.75rem;">♥</span>
+  <span class="heart" style="left:93%; animation-duration:13s; animation-delay:6s;">♥</span>
+
+  <div class="eyebrow">H. C. ANDERSEN · A LIFE OF UNSPOKEN LOVE</div>
+  <h1>安徒生的心之地圖<br>那些他愛慕過的人</h1>
+  <p>他寫下全世界孩子都讀過的童話，卻終身未婚、可能終身未曾與人相守。在超過五百封書信與私人日記裡，安徒生把最灼熱、最赤裸的告白，留給了幾位女子——也留給了幾位男子。這裡整理的，是他一生反覆渴望、反覆錯過的心事。</p>
+  <div class="note">內容整理自公開傳記研究、學術論文與書信集英譯 · 詳見文末資料來源</div>
+</header>
+
+<section id="prelude">
+  <div class="wrap">
+    <span class="tag">序</span>
+    <h2>一顆同時渴望、也害怕被回應的心</h2>
+    <p class="lede">安徒生出身貧困，14 歲隻身北上哥本哈根追夢，靠著柯林家族等貴人資助才得以受教育、躋身上流文壇。這樣的出身，讓他一輩子活在「渴望被愛、又不相信自己值得被愛」的矛盾裡——他對感情對象的告白往往異常熱烈、近乎自我暴露，換來的卻多半是禮貌的疏遠或委婉的拒絕。</p>
+    <p>他愛過的人裡，有階級遠高於他、最終選擇迎娶他人的柯林家兄妹；有他終生仰慕、卻只把他當兄長看待的「瑞典夜鶯」珍妮·林德；也有幾位讓他在中年、甚至暮年仍願意奮不顧身寫下情書的年輕男子。這些關係大多停留在書信與凝視之間，從未修成眷屬——但正是這些反覆的渴望與落空，餵養出〈人魚公主〉〈夜鶯〉〈雪人〉裡那些「求而不得」的靈魂。</p>
+    <div class="callout">
+      <span class="label">閱讀提醒</span>
+      <p>安徒生與同性密友往來的書信，身後長期由柯林家族後人選擇性保管、公開，19 世紀丹麥社會中男性間熱烈的「浪漫友誼」用語也不必然等同於今日對「同性戀」的定義。因此，安徒生的性向至今仍是學界持續討論、沒有定論的議題（詳見〈未有定論的心事〉段落），本頁的整理力求呈現多方史料與觀點，而非蓋棺論定。</p>
+    </div>
+  </div>
+</section>
+
+<section id="people" class="alt">
+  <div class="wrap">
+    <span class="tag">他愛慕過的人</span>
+    <h2>七段深淺不一的心事</h2>
+    <p>依安徒生初識或情感最濃烈的時間排序，橫跨他 25 歲到近 60 歲的人生。其中露薏絲·柯林、蘇菲·奧斯特兩位查無可公開轉載的真實畫像來源，肖像為 AI 依時代服飾風格繪製的示意圖。</p>
+
+    <div class="people">
+
+      <!-- Riborg Voigt -->
+      <div class="pcard">
+        <div class="photo">
+          <img src="images/love/riborg-voigt-illustration.png" alt="莉波格·沃伊特示意肖像（AI 依 1830 年代丹麥仕女服飾風格繪製，非真實畫像）">
+          <span class="ribbon">初戀・命中錯過</span>
+          <span class="imgcredit">AI 示意繪製，非真實畫像</span>
+        </div>
+        <div class="body">
+          <div class="name">莉波格·沃伊特 Riborg Voigt</div>
+          <div class="dates">1806–1883 · 相識於 1830 年</div>
+          <p>安徒生 25 歲時在腓特烈西亞認識商人之女莉波格，一見傾心，可惜她早已與另一名男子訂婚。這是安徒生公開紀錄裡第一段刻骨銘心的單戀。</p>
+          <p>終其一生，安徒生始終沒有放下這段感情——1875 年他過世時，貼身佩戴的一個小布袋裡，裝的正是莉波格多年前寫給他的一封信，直到嚥氣那一刻都還帶在身上。</p>
+          <div class="echo">迴聲：這份「隨身帶著卻永遠無法擁有」的執念，常被認為是他日後反覆書寫單戀主題的起點。</div>
+        </div>
+      </div>
+
+      <!-- Louise Collin -->
+      <div class="pcard">
+        <div class="photo">
+          <img src="images/love/louise-collin-illustration.png" alt="露薏絲·柯林示意肖像（AI 依 1830 年代丹麥仕女服飾風格繪製，非真實畫像）">
+          <span class="ribbon">青春的暗戀</span>
+          <span class="imgcredit">AI 示意繪製，非真實畫像</span>
+        </div>
+        <div class="body">
+          <div class="name">露薏絲·柯林 Louise Collin</div>
+          <div class="dates">1813–1898 · 暗戀始於 1832 年</div>
+          <p>露薏絲是安徒生恩人約拿斯·柯林最小的女兒，也是他最濃烈的一段男性情感對象——愛德華·柯林——的親妹妹。1832 年安徒生開始對她動心，寫了不少私密書信與熱情洋溢的情詩向她表白，但她始終沒有回應這份感情。</p>
+          <p>求愛落空後，安徒生轉而試圖贏得她哥哥愛德華的心，把他當作可以傾訴一切的「confidant」——露薏絲後來嫁給他人，改名 Louise Lind；而安徒生對柯林家「兄妹皆曾心動」的模式，也讓後世研究者注意到他對整個柯林家族近乎依戀式的情感連結。</p>
+          <div class="echo">迴聲：後來安徒生成為露薏絲子女口中會剪紙、說故事的「安徒生叔叔」，這段暗戀轉化成了跨世代的溫情。</div>
+        </div>
+      </div>
+
+      <!-- Edvard Collin -->
+      <div class="pcard">
+        <div class="photo">
+          <img src="images/love/edvard-collin.jpg" alt="愛德華·柯林油畫肖像，威廉·馬斯特蘭 1855 年繪">
+          <span class="ribbon">灼熱的愛戀・畢生未解</span>
+          <span class="imgcredit">Wilhelm Marstrand 繪, 1855 · Wikimedia Commons 公有領域</span>
+        </div>
+        <div class="body">
+          <div class="name">愛德華·柯林 Edvard Collin</div>
+          <div class="dates">1808–1886 · 通信超過 500 封，橫跨畢生</div>
+          <p>柯林家的長子，安徒生一生情感濃度最高、持續最久的對象。兩人自青年時期相識，安徒生曾提議以較親密的「你（du）」互稱，被柯林婉拒；他也曾懇求柯林以兄弟相待，卻始終得不到對等的回應。</p>
+          <p>1836 年，柯林決定與一名女性結婚，安徒生深受打擊，自我放逐至菲因島，陷入低潮——隔年寫下的〈人魚公主〉，德國學者米夏埃爾·馬爾認為正是這段無望愛情的隱喻重述：一個犧牲一切、卻始終無法被愛人真正看見的靈魂。</p>
+          <p>這段感情安徒生用一生去經營：即使柯林始終拒絕以「你（du）」相稱，他仍不斷追求這段關係直到終老。安徒生過世時立下遺囑，將愛德華·柯林指定為他<strong>唯一的財產繼承人</strong>——這是安徒生留給世界最後、也最沉默的一句告白。</p>
+          <blockquote>「誰也沒有這樣痛擊過我，誰也沒讓我流下更多眼淚——但我愛誰，都不像我愛你這樣多。」
+            <cite>安徒生致柯林信件，1835 年</cite>
+          </blockquote>
+          <div class="echo">迴聲：〈人魚公主〉——用聲音（自我）換取靠近所愛之人的機會，最終仍是徒勞。</div>
+        </div>
+      </div>
+
+      <!-- Sophie Ørsted -->
+      <div class="pcard">
+        <div class="photo">
+          <img src="images/love/sophie-orsted-illustration.png" alt="蘇菲·奧斯特示意肖像（AI 依 1830 年代丹麥仕女服飾風格繪製，非真實畫像）">
+          <span class="ribbon">不敢說出口的自卑</span>
+          <span class="imgcredit">AI 示意繪製，非真實畫像</span>
+        </div>
+        <div class="body">
+          <div class="name">蘇菲·奧斯特 Sophie Ørsted</div>
+          <div class="dates">1821–1889 · 暗戀於 1837 年</div>
+          <p>物理學家漢斯・克里斯汀・厄斯特（電磁學先驅）之女，比安徒生小 16 歲。安徒生對她一見傾心，卻始終把這份感情藏在心底——因為他自覺出身貧寒、配不上這樣的書香門第，不是「好對象」。</p>
+          <p>1837 年 12 月，安徒生得知蘇菲已與法律系畢業生 Fritz Dahlstrøm 訂婚，當天在日記裡只留下一句：「今天蘇菲訂婚了。」他把這份無疾而終的暗戀寫進詩作〈但願我有錢！〉（Gid jeg var riig!），暗指若自己出身富裕，結局是否會不同。</p>
+          <div class="echo">迴聲：終其一生反覆出現的「自覺配不上」心結，是他多篇童話裡貧窮主角面對階級落差時的心理原型。</div>
+        </div>
+      </div>
+
+      <!-- Jenny Lind -->
+      <div class="pcard">
+        <div class="photo">
+          <img src="images/love/jenny-lind.jpg" alt="珍妮·林德照片，約 1851 年">
+          <span class="ribbon">求婚被拒的知音</span>
+          <span class="imgcredit">約 1851 年攝 · Wikimedia Commons 公有領域</span>
+        </div>
+        <div class="body">
+          <div class="name">珍妮·林德 Jenny Lind</div>
+          <div class="dates">1820–1887 · 相識於 1840 年，1843 年墜入情網並求婚</div>
+          <p>被譽為「瑞典夜鶯」的知名歌劇女伶，是安徒生對外公認最著名的單戀對象。1843 年，安徒生正式向她求婚，這是他一生中少數幾次真正跨出「只敢暗戀」那一步的行動。</p>
+          <p>林德婉拒了他，始終只把安徒生當作兄長或摯友，未曾以同等的情感回應——但兩人仍維持了長期的友誼，安徒生也創作童話〈夜鶯〉向她致意。</p>
+          <div class="echo">迴聲：〈夜鶯〉——一隻無法被馴養、只為真心而歌唱的鳥，呼應林德在安徒生心中「可遠觀而不可褻玩」的形象。</div>
+        </div>
+      </div>
+
+      <!-- Carl Alexander -->
+      <div class="pcard">
+        <div class="photo">
+          <img src="images/love/carl-alexander.jpg" alt="卡爾·亞歷山大肖像，1855 年，時年 37 歲">
+          <span class="ribbon">跨越階級的忘年情誼</span>
+          <span class="imgcredit">Richard Lauchert 繪, 1855 · Wikimedia Commons 公有領域</span>
+        </div>
+        <div class="body">
+          <div class="name">卡爾·亞歷山大 Carl Alexander</div>
+          <div class="dates">1818–1901 · 相識於 1844 年，通信持續至安徒生辭世</div>
+          <p>薩克森－威瑪－艾森納赫的世襲公爵（後為大公），安徒生歐遊時結識的年輕貴族。與柯林不同，安徒生對他的熱烈情感這次得到了正面回應——兩人維持了長達三十餘年的深厚友誼與頻繁書信往來。</p>
+          <p>卡爾·亞歷山大後來成為安徒生晚年最重要的贊助人與精神寄託之一，安徒生多次受邀造訪威瑪宮廷，被視為座上賓。這段關係跨越了平民與貴族的巨大階級鴻溝，也是少數讓安徒生感到「被珍視」的長期情感連結。</p>
+          <div class="echo">迴聲：常與〈醜小鴨〉的「終於被看見、被接納」互相參照——雖然對象换成了真實人生裡的一位王室知己。</div>
+        </div>
+      </div>
+
+      <!-- Harald Scharff -->
+      <div class="pcard">
+        <div class="photo">
+          <img src="images/love/harald-scharff.jpg" alt="哈拉爾·夏爾夫舞台照，1860 年">
+          <span class="ribbon">暮年最後的心動</span>
+          <span class="imgcredit">Henrik Wickmann 攝, 1860 · Wikimedia Commons 公有領域</span>
+        </div>
+        <div class="body">
+          <div class="name">哈拉爾·夏爾夫 Harald Scharff</div>
+          <div class="dates">1836–1912 · 相識於 1857 年，情感最濃於 1860–1863 年</div>
+          <p>丹麥皇家劇院的首席男舞者，安徒生 1857 年在巴黎結識他時，已年過半百，夏爾夫則是 21 歲的青年舞者。1860 年兩人在巴伐利亞的奧伯拉瑪高意外重逢後，感情迅速升溫。</p>
+          <p>安徒生 1861–1862 年的私人日記中，記錄了與夏爾夫親吻、擁抱等親密時刻的片段，兩人也互贈生日禮物、書信往來（原信已佚失）。他曾形容夏爾夫是「一隻善意翩翩飛舞的蝴蝶」。1863 年後，夏爾夫的感情轉向女性，這段關係逐漸淡去，他後來也於 1874 年結婚。</p>
+          <div class="echo">迴聲：〈雪人〉（1861）——一座愛上暖爐、明知終將融化也甘願靠近的雪人，被許多學者視為這段感情的寫照。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="letters">
+  <div class="wrap">
+    <span class="tag">書信裡的告白</span>
+    <h2>那些他親手寫下、又捨不得撕毀的字句</h2>
+    <p>以下引文譯自安徒生書信與相關人士回憶錄的英譯本，原件多以丹麥文寫成。</p>
+
+    <div class="letters">
+      <div class="letter-card">
+        <div class="who">安徒生 致 愛德華·柯林 · 1835－1836 年間</div>
+        <div class="quote-orig">"I long for you as though you were a beautiful Calabrian girl…"</div>
+        <div class="quote-zh">「我渴望你，宛如渴望一位美麗的卡拉布里亞少女……我對你的感覺，就像對待一個女人一樣。」</div>
+        <div class="src">來源：Rictor Norton,《Gay Love Letters through the Centuries》書信英譯選集</div>
+      </div>
+
+      <div class="letter-card">
+        <div class="who">安徒生 致 愛德華·柯林 · 1830 年代</div>
+        <div class="quote-orig">"…at De er den jeg elsker højst."</div>
+        <div class="quote-zh">「……你，是我最愛的人。」</div>
+        <div class="src">來源：安徒生博物館（H.C. Andersens Hus）展板 · 對照 hcandersen-homepage.dk 書信整理</div>
+      </div>
+
+      <div class="letter-card">
+        <div class="who">安徒生 致 愛德華·柯林 · 1835 年</div>
+        <div class="quote-orig">"Our friendship is like 'The Mysteries' — it should not be analyzed."</div>
+        <div class="quote-zh">「我們的友誼就像《秘密》一樣，不該被拆解分析。」</div>
+        <div class="src">來源：LGBTQ Nation 報導引述學界研究</div>
+      </div>
+
+      <div class="letter-card">
+        <div class="who">愛德華·柯林 · 晚年回憶錄自白</div>
+        <div class="quote-orig">"I found myself unable to respond to this love, and this caused the author much suffering."</div>
+        <div class="quote-zh">「我發現自己無法回應這份愛，這讓（安徒生）深受折磨。」</div>
+        <div class="src">來源：柯林本人回憶錄，轉引自界面新聞〈安徒生：隱藏在童話中的人生〉</div>
+      </div>
+
+      <div class="letter-card">
+        <div class="who">安徒生私人日記 · 描述哈拉爾·夏爾夫 · 約 1861 年</div>
+        <div class="quote-orig">"…a butterfly who flits around sympathetically."</div>
+        <div class="quote-zh">「一隻善意翩翩飛舞的蝴蝶。」</div>
+        <div class="src">來源：Alastair Macaulay 專文分析安徒生日記</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="echoes" class="alt">
+  <div class="wrap">
+    <span class="tag">童話裡的回聲</span>
+    <h2>當求而不得的心事，變成全世界孩子的睡前故事</h2>
+    <div class="echoes">
+      <div class="echo-card">
+        <div class="title">〈人魚公主〉 ×  愛德華·柯林</div>
+        <p>用最珍貴的東西（聲音／自我）換取靠近所愛之人的機會，最終仍只能化為泡沫——寫於柯林宣布結婚的隔年。</p>
+      </div>
+      <div class="echo-card">
+        <div class="title">〈夜鶯〉 × 珍妮·林德</div>
+        <p>一隻無法被豢養、只為真心歌唱的鳥，比人工機械夜鶯更打動人心，呼應他對林德「可仰慕不可佔有」的心境。</p>
+      </div>
+      <div class="echo-card">
+        <div class="title">〈雪人〉 × 哈拉爾·夏爾夫</div>
+        <p>雪人愛上壁爐裡的火，明知靠近就會融化消失，仍甘願凝望——寫於與夏爾夫感情最濃烈的 1861 年。</p>
+      </div>
+      <div class="echo-card">
+        <div class="title">〈醜小鴨〉 × 一生的自我認同</div>
+        <p>不只是單一段戀情的投射，更貫穿他從貧民窟少年到全歐洲名人的整個人生：始終覺得自己與眾不同、渴望被同類真正接納。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="debate">
+  <div class="wrap">
+    <span class="tag">未有定論的心事</span>
+    <h2>他到底是誰？學界仍在爭論</h2>
+    <p>安徒生的感情紀錄留下了大量看似「證據確鑿」的熱烈文字，但要為他貼上今日意義下的「同性戀」「雙性戀」標籤，學界態度其實相當謹慎，原因大致有三：</p>
+    <p><strong>一、史料的選擇性保存。</strong>安徒生與男性密友的私人信件，身後長期由柯林家族後人保管，公開時經過篩選與刪節，完整全貌至今難以還原。</p>
+    <p><strong>二、19 世紀的語境落差。</strong>當時歐洲男性之間流行以濃烈、近乎情書的語言表達「浪漫友誼」，不必然涉及今日定義下的性向或性關係——但安徒生信中反覆出現「像愛女人一樣愛你」這類自我比擬，仍讓許多學者認為程度已超出當時的社交慣例。</p>
+    <p><strong>三、缺乏性經驗的紀錄。</strong>多數傳記都指出，依現存證據，安徒生終生極可能未曾與任何人發生性關係——無論對象是男是女。</p>
+    <div class="callout">
+      <span class="label">目前主要有兩派解讀</span>
+      <p>一派認為安徒生是壓抑在保守宗教與社會規範下的同性戀或雙性戀者，他對女性的追求某種程度上是一種「安全的、不會成真」的自我保護；另一派則認為，他更像是一位情感異常強烈、卻缺乏性經驗與親密關係實踐能力的浪漫主義者，其熾熱書寫是特殊人格與時代語彙交織的結果，不宜直接套用現代性向分類。兩派共識僅止於：安徒生一生都在渴望愛與逃避愛之間拉扯。</p>
+    </div>
+  </div>
+</section>
+
+<section id="sources" class="alt">
+  <div class="wrap sources">
+    <span class="tag">資料來源</span>
+    <h2>延伸閱讀與圖片來源</h2>
+    <ol>
+      <li><a href="https://www.thepinknews.com/2023/02/25/hans-christian-andersen-gay-little-mermaid-lgbtq/" target="_blank" rel="noopener">PinkNews — Was The Little Mermaid writer Hans Christian Andersen gay?</a></li>
+      <li><a href="https://www.lgbtqnation.com/2019/07/little-mermaid-originally-gay-love-letter-authors-crush/" target="_blank" rel="noopener">LGBTQ Nation — The Little Mermaid was originally a 'love letter' to the author's male crush</a></li>
+      <li><a href="https://rictornorton.co.uk/andersen.htm" target="_blank" rel="noopener">Rictor Norton — Gay Love Letters through the Centuries: Hans Christian Andersen</a></li>
+      <li><a href="https://www.themarginalian.org/2020/01/31/the-heartbreak-of-hans-christian-andersen/" target="_blank" rel="noopener">The Marginalian — How Hans Christian Andersen Turned His Heartbreak into The Little Mermaid</a></li>
+      <li><a href="https://www.pcfleming.com/2018/08/28/andersen_sexuality/" target="_blank" rel="noopener">pcfleming.com — Hans Christian Andersen's Sexuality</a></li>
+      <li><a href="https://www.literarytraveler.com/articles/the-romantic-life-of-hans-christian-andersen/" target="_blank" rel="noopener">Literary Traveler — The Romantic Life of Hans Christian Andersen</a></li>
+      <li><a href="https://www.alastairmacaulay.com/all-essays/qc5ktsfstq43usv1z5qud2kdbni2ht" target="_blank" rel="noopener">Alastair Macaulay — Harald Scharff, the Bournonville male dreamboat to whom Hans Christian Andersen lost his heart</a></li>
+      <li><a href="https://www.jiemian.com/article/5710310.html" target="_blank" rel="noopener">界面新聞——安徒生：隱藏在童話中的人生</a></li>
+      <li><a href="https://www.flstudies.org/assets/upload/images/2022/08/30/7edf315a39c839049b29fbe6.pdf" target="_blank" rel="noopener">林愛華——從同性戀情結探討安徒生故事裡的戀情</a></li>
+      <li><a href="https://www.shejibiji.com/archives/980" target="_blank" rel="noopener">設計筆記——詳解安徒生的情感世界</a></li>
+      <li><a href="https://www.hcandersen-homepage.dk/?page_id=71886" target="_blank" rel="noopener">H.C. Andersen Information——H.C. Andersens forelskelser（安徒生的暗戀對象整理）</a></li>
+      <li><a href="https://museumodense.dk/en/artikler/h-c-andersen-og-familien-oersted/" target="_blank" rel="noopener">Museum Odense——H.C. Andersen og familien Ørsted</a></li>
+      <li>部分人物生平細節與書信引句，對照安徒生本人於歐登西「安徒生博物館」（H.C. Andersens Hus）現場展板內容核實。</li>
+      <li>人物圖片：Edvard Collin（Wilhelm Marstrand 繪, 1855）、Carl Alexander（Richard Lauchert 繪, 1855）、Harald Scharff（Henrik Wickmann 攝, 1860）、Jenny Lind（約 1851 年攝）、H.C. Andersen（C.A. Jensen 繪 1836／Thora Hallager 攝 1869），均取自 <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> 公有領域館藏。莉波格·沃伊特、露薏絲·柯林、蘇菲·奧斯特三位查無可公開轉載的真實畫像來源，肖像為 AI 依時代服飾風格繪製的示意圖，非真實容貌。</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    本頁為《歐登西的說故事人：安徒生與他的童話王國》延伸專題，文字整理自公開傳記研究與學術論文，力求呈現多元史料觀點，非最終定論。<br>
+    <a href="index.html">← 回到安徒生生平主頁</a> ·
+    <a href="https://maskywg.github.io/northeurope/北歐四國" target="_blank" rel="noopener">回到北歐四國主行程網頁 ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
