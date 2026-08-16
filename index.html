@@ -113,6 +113,32 @@
   strong{color:var(--ink);}
   a{color:var(--wine-deep);}
 
+  .photo-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.4rem;
+    margin:2rem 0;
+  }
+  @media (max-width:640px){
+    .photo-grid{grid-template-columns:1fr;}
+  }
+  .photo-grid figure{margin:0;}
+  .photo-grid img{
+    width:100%;
+    aspect-ratio:4/3;
+    object-fit:cover;
+    border-radius:10px;
+    display:block;
+    box-shadow:0 8px 22px rgba(58,15,22,.18);
+  }
+  .photo-grid figcaption{
+    font-size:.82rem;
+    color:#8a7256;
+    margin-top:.5rem;
+    font-style:italic;
+    line-height:1.6;
+  }
+
   figure{margin:2rem 0;}
   figure img, figure video{
     width:100%;
@@ -567,6 +593,12 @@
   <div class="wrap">
     <span class="tag">06 · 朝聖地</span>
     <h2>H.C. Andersens Hus：全世界最大的單一作家博物館</h2>
+    <figure>
+      <video controls preload="metadata" poster="images/museum-visit-poster.jpg">
+        <source src="videos/museum-visit.mp4" type="video/mp4">
+      </video>
+      <figcaption>先劇透一下：這條巷子看起來就像直接從安徒生的童話裡走出來的場景——事實上，兩百年來它大概也沒怎麼變過（旅途實錄影片）</figcaption>
+    </figure>
     <p>座落於歐登西老城區、安徒生兒時生長街區旁的<strong>安徒生博物館（H.C. Andersens Hus）</strong>，2021 年 6 月由日本建築師<strong>隈研吾（Kengo Kuma）</strong>操刀重新設計啟用，被官方稱為「全世界規模最大的單一作家博物館」。新館刻意將主要展覽空間<strong>下沉至地面以下</strong>，讓覆滿草坡屋頂的圓形庭院與周圍歷史街屋的天際線和諧共存，不搶走老城區原有的童話氛圍。</p>
     <figure>
       <img src="images/museum-building_20260730_091507.png" alt="安徒生博物館新館建築示意圖，圓形下沉庭院與草坡屋頂">
@@ -574,12 +606,48 @@
     </figure>
     <p>館內以沉浸式的多媒體手法，將安徒生的生平與童話世界交織呈現——訪客會穿梭於一系列圓形展廳與地下迴廊之間，搭配光影、聲音與互動裝置，重現〈醜小鴨〉〈人魚公主〉〈國王的新衣〉等經典場景的情境，而非只是靜態的文物陳列。館外的童話花園則種植了大量呼應各篇故事意象的植栽與造景，適合放慢腳步散步。</p>
     <p>博物館園區內也保留、串連了安徒生真正的<strong>兒時故居（H.C. Andersens Barndomshjem）</strong>——一間位於 Munkemøllestræde 街上、極其樸素的小屋，是安徒生 2 歲到 14 歲離家前往哥本哈根之前實際居住的地方，如今作為新館的延伸展區之一，讓訪客能對照他從貧困出身到享譽世界的巨大反差。</p>
-    <figure>
-      <video controls preload="metadata" poster="images/museum-visit-poster.jpg">
-        <source src="videos/museum-visit.mp4" type="video/mp4">
-      </video>
-      <figcaption>現場實拍：歐登西老城區裡的黃色木構老屋街景，安徒生博物館與故居就座落在這樣的巷弄之間（旅途實錄影片）</figcaption>
-    </figure>
+
+    <h3>故居現場實拍：走進安徒生真正長大的地方</h3>
+    <p>以下是實地走訪兒時故居時拍下的照片——不是示意圖，是這間小屋現在真實的樣子。</p>
+    <div class="photo-grid">
+      <figure>
+        <img src="images/museum-photos/plaque-1875.jpg" alt="故居門口展示的1875年老照片">
+        <figcaption>這張 1875 年拍攝的老照片，正好是安徒生辭世那年——他從沒看過這張照片，卻一輩子活在這條巷子的記憶裡。</figcaption>
+      </figure>
+      <figure>
+        <img src="images/museum-photos/andersen-portrait-photo.jpg" alt="館內展示的安徒生真跡簽名肖像照">
+        <figcaption>館內掛著的安徒生真跡簽名照，側臉的鼻子弧度像極了他自己筆下的醜小鴨——這大概不是巧合。</figcaption>
+      </figure>
+      <figure>
+        <img src="images/museum-photos/straw-shoes.jpg" alt="門邊塞滿稻草保暖的舊鞋">
+        <figcaption>門邊那雙塞滿稻草保暖的舊鞋，比〈賣火柴的小女孩〉故事裡赤腳走在雪地的處境，已經算幸運多了。</figcaption>
+      </figure>
+      <figure>
+        <img src="images/museum-photos/cobbler-tools.jpg" alt="鞋匠父親的製鞋工作檯與工具">
+        <figcaption>父親的製鞋工作檯完整保留至今——安徒生後來寫童話賺的稿費，遠比這些工具一輩子能賺的還多。</figcaption>
+      </figure>
+      <figure>
+        <img src="images/museum-photos/canopy-bed.jpg" alt="故居內一家人共用的有頂篷小床">
+        <figcaption>一家人共用的小床，安徒生最初的「床邊故事」，大概就是自己躺在這裡講給自己聽的。</figcaption>
+      </figure>
+      <figure>
+        <img src="images/museum-photos/stove-painting.jpg" alt="故居內牆角的老式火爐與掛畫">
+        <figcaption>牆邊的老火爐能燒的柴火有限，但安徒生後來在紙上生的那把火，燒了快兩百年還沒熄。</figcaption>
+      </figure>
+      <figure>
+        <img src="images/museum-photos/childhood-room.png" alt="故居內的起居室，鞋匠工具擺在桌上">
+        <figcaption>起居室裡，鞋匠的工具還好好擺在桌上，彷彿下一秒安徒生就會從門口探頭進來。</figcaption>
+      </figure>
+      <figure>
+        <img src="images/museum-photos/fireplace.png" alt="故居廚房的老式爐灶與銅壺">
+        <figcaption>廚房裡的老銅壺仍掛在爐上——某種意義上，這裡才是安徒生故事真正的起點。</figcaption>
+      </figure>
+      <figure>
+        <img src="images/museum-photos/narrow-alley.png" alt="通往故居的黃牆窄巷">
+        <figcaption>通往故居的窄巷，兩側黃牆窄得容不下兩人並肩——但從這裡走出去的故事，卻裝下了全世界孩子的童年。</figcaption>
+      </figure>
+    </div>
+
     <div class="callout">
       <span class="label">導遊小提醒</span>
       <p>Masaru 先生說，館內有個展區疊了整整 <strong>20 層床墊</strong>，就是呼應〈豌豆公主〉故事裡王后測試公主的那個橋段，參觀時別錯過，可以找找看床墊最底下藏的那顆豌豆。</p>
